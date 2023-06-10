@@ -1,0 +1,70 @@
+{
+  "name": "react-admin",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fullcalendar/daygrid": "^6.1.5",
+    "@fullcalendar/list": "^6.1.5",
+    "@fullcalendar/timegrid": "^6.1.5",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.11.16",
+    "@mui/x-data-grid": "^6.0.4",
+    "@nivo/bar": "^0.80.0",
+    "@nivo/core": "^0.80.0",
+    "@nivo/geo": "^0.80.0",
+    "@nivo/line": "^0.80.0",
+    "@nivo/pie": "^0.80.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@zag-js/menu": "^0.10.2",
+    "@zag-js/react": "^0.10.2",
+    "formik": "^2.2.9",
+    "i18next": "^22.5.0",
+    "i18next-xhr-backend": "^3.2.2",
+    "json2mq": "^0.2.0",
+    "material-ui-popup-state": "^5.0.8",
+    "mdi-material-ui": "^7.7.0",
+    "mui-nested-menu": "^3.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.3.1",
+    "react-icon": "^1.0.0",
+    "react-icons": "^4.8.0",
+    "react-live-clock": "^6.1.13",
+    "react-pro-sidebar": "^0.7.1",
+    "react-router-dom": "^6.10.0",
+    "react-scripts": "5.0.1",
+    "react-simple-image-slider": "^2.4.1",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
+    "web-vitals": "^2.1.4",
+    "yup": "^1.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
