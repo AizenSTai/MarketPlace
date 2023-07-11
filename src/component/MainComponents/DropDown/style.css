@@ -1,0 +1,18 @@
+@media screen and (max-width:900px) {
+    #dropdownTitle {
+        font-size: 0.8rem
+    }
+    #containerBox {
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+}
+
+#containerBox {
+    color: black;
+    cursor: pointer;
+    display: flex;
+    margin-top: auto;
+    box-sizing: border-box;
+    margin-bottom: auto
+}

@@ -18,6 +18,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Search } from "@mui/icons-material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../../theme";
+import "./style.css"
 import json2mq from "json2mq";
 // import Clock from "react-live-clock"
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
@@ -35,8 +36,8 @@ import { useState, Fragment } from "react";
 import { useTranslation } from "react-i18next";
 
 const Topbar = (props) => {
-  const {t,i18n} = useTranslation()
-  const {page} = props
+  const { t, i18n } = useTranslation();
+  const { page } = props;
   const theme = useTheme();
   const navigate = useNavigate();
   const colors = tokens(theme.palette.mode);
@@ -44,7 +45,7 @@ const Topbar = (props) => {
 
   return (
     <Box
-      Id="toTop"
+      id="toTop"
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -62,35 +63,46 @@ const Topbar = (props) => {
         sx={{
           display: "flex",
           height: "45px",
-          zIndex:10,
+          zIndex: 10,
           width: "100%",
           backgroundColor: "white",
           borderBottom: "1px solid #ddd",
         }}
       >
         {/* Logo */}
-        <Box sx={{ width: "3.5%",mr:1,ml:1 }}>
+        <Box sx={{ width: "3.5%", mr: 1, ml: 1 }}>
           <a href="//www.google.com" target="_blank">
             <img
               src="/images/logos/MainLogo.ico"
               alt="HTML tutorial"
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "45px", height: "45px" }}
             />
           </a>
         </Box>
         {/* Tabs */}
-        <Box sx={{ display: "flex", justifyContent: "space-between" ,width:"96%"}}>
-          <Box sx={{ display: "flex",width:"40%",justifyContent:"left" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "96%",
+          }}
+        >
+          <Box sx={{ display: "flex", width: "40%", justifyContent: "left" }}>
             <Dropdown
               title={t("categories")}
               left={true}
-              icon={<FormatListBulletedIcon fontSize="small" sx={{mt:"auto",mb:"auto",mr:1,ml:2}} />}
+              icon={
+                <FormatListBulletedIcon
+                  fontSize="small"
+                  sx={{ mt: "auto", mb: "auto", mr: 1, ml: 2 }}
+                />
+              }
             />
           </Box>
-          <Box sx={{ display: "flex",width:"60%",justifyContent:"right" }}>
+          <Box sx={{ display: "flex", width: "60%", justifyContent: "right" }}>
             <Dropdown
               title=""
-              icon={<ExpandMoreIcon sx={{ fontSize: "1rem",mt:"auto" }} />}
+              icon={<ExpandMoreIcon sx={{ fontSize: "1rem", mt: "auto" }} />}
               icon2={
                 <Person2Icon
                   sx={{ fontSize: "1.6rem", cursor: "pointer" }}
@@ -128,13 +140,27 @@ const Topbar = (props) => {
             /> */}
             <Dropdown
               title={t("help")}
-              icon={<ExpandMoreIcon sx={{ fontSize: "1rem" ,mt:"auto"}} />} border="1"/>
+              icon={
+                <ExpandMoreIcon
+                  sx={{
+                    fontSize: "1rem",
+                    mt: "auto",                    
+                  }}
+                />
+              }
+              border="1"
+            />
             <Dropdown
               title={t("language")}
-              icon={<ExpandMoreIcon sx={{ fontSize: "1rem",mt:"auto" }}/>} type="lang" border="1"/>
+              icon={<ExpandMoreIcon sx={{ fontSize: "1rem", mt: "auto" }} />}
+              type="lang"
+              border="1"
+            />
             <Dropdown
               title={t("more")}
-              icon={<ExpandMoreIcon sx={{ fontSize: "1rem",mt:"auto" }} />} border="1"/>
+              icon={<ExpandMoreIcon sx={{ fontSize: "1rem", mt: "auto" }} />}
+              border="1"
+            />
           </Box>
         </Box>
       </Box>
@@ -157,24 +183,24 @@ const Topbar = (props) => {
           }}
         >
           <Button
+            id="navigateButton"
             sx={{
-              fontSize: "1.2rem",
               borderBottom: page == "products" ? "2px solid white" : "0px",
-              fontWeight: page == "products" ? "600" : "",textTransform:"capitalize",letterSpacing:"1px"
+              fontWeight: page == "products" ? "600" : "",              
             }}
-            onClick={() => {              
+            onClick={() => {
               navigate("/products");
             }}
           >
             {t("products")}
           </Button>
           <Button
+            id="navigateButton"
             sx={{
-              fontSize: "1.2rem",
               borderBottom: page == "sellers" ? "2px solid white" : "0px",
-              fontWeight: page == "sellers" ? "600" : "",textTransform:"capitalize",letterSpacing:"1px"
+              fontWeight: page == "sellers" ? "600" : "",
             }}
-            onClick={() => {              
+            onClick={() => {
               navigate("/sellers");
             }}
           >
@@ -182,27 +208,13 @@ const Topbar = (props) => {
           </Button>
         </Box>
         <Box
-          sx={{
-            direction: "rtl",
-            mr: "auto",
-            ml: "auto",
-            height: "40px",
-            borderRadius: "25px",
-            display: "flex",
-            justifyContent: "space-between",
-            backgroundColor: "white",
-            width: "60%",
-            mt: 1,
+          id="searchBoxContainer"
+          sx={{            
           }}
         >
           <InputBase
+            id="inputBase"
             sx={{
-              mr:3,
-              ml:3,
-              width: "600px",
-              fontSize: "1rem",
-              color: "black",
-              direction: "rtl",
             }}
             placeholder={t("whatareyoulookingfor")}
           />
@@ -213,19 +225,12 @@ const Topbar = (props) => {
               />
             </IconButton> */}
             <IconButton
+              id="iconButton"
               type="button"
               sx={{
-                backgroundColor: "orange",
-                width: "100px",
-                color: "white",
-                borderTopRightRadius: "25px",
-                borderBottomRightRadius: "25px",
-                borderTopLeftRadius: "25px",
-                borderBottomLeftRadius: "25px",
-                "&:hover": { backgroundColor: "orange" },
               }}
             >
-              <Typography fontSize="1rem">{t("search")}</Typography>
+              <Typography fontSize="1rem" sx={{"@media (max-width:900px)":{fontSize:"0.8rem"}}}>{t("search")}</Typography>
               <Search fontSize="medium" sx={{}} />
             </IconButton>
           </Box>

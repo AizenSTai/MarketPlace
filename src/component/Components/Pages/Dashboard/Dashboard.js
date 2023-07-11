@@ -14,8 +14,9 @@ import Topbar from "../../../MainComponents/Topbar/Topbar";
 import { useTranslation } from "react-i18next";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./style.css"
 import Slider from "react-slick";
-
+import useMediaQuery from '@mui/material/useMediaQuery';
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -26,7 +27,6 @@ function SampleNextArrow(props) {
         />
     );
 }
-
 function SamplePrevArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -41,6 +41,7 @@ function SamplePrevArrow(props) {
 const Dashboard = ({ subTitle }) => {
     const { t, i18n } = useTranslation()
     const theme = useTheme();
+    const matches = useMediaQuery('(min-width:900px)');
     const colors = tokens(theme.palette.mode);
     const images = [
         { url: "images/mainImgs/SliderImgs/download1.png" },
@@ -59,7 +60,7 @@ const Dashboard = ({ subTitle }) => {
     };
     const settingsCard = {
         infinite: true,
-        slidesToShow: 3,
+        slidesToShow: matches ? 3 : 1,
         slidesToScroll: 1,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
@@ -76,45 +77,38 @@ const Dashboard = ({ subTitle }) => {
     },[])
     return (
         <Box  sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            <Topbar page="products" />
-            <Box sx={{
-                backgroundColor: "white", height: "80px", width: "90%", margin: "0 auto", borderRadius: "10px", transform: "translateY(-50px)"
-                , display: "flex"
-            }}>
-                <Box sx={{ width: "33%", p: 2, pr: 3, pl: 3, display: "flex" }}>
+            <Topbar page="products" />            
+            <Box id="Triplecontainer" >
+                <Box id="Subcontainer">
                     <a href="//www.google.com" target="_blank">
-                        <LocalMallTwoToneIcon sx={{ color: "darkorange", fontSize: "3.1rem" }} />
+                        <LocalMallTwoToneIcon id="SubContainerIcon" />
                     </a>
-                    <Box sx={{ ml: 3 }}>
-                        <Typography sx={{ fontWeight: "bold", fontSize: "1rem" }}>{t("shopguide")}</Typography>
-                        <Typography sx={{ color: "grey", fontSize: "0.8rem", mt: 0.5 }}>{t("onerequestmultiplequotes")}</Typography>
+                    <Box id="SubSubcontainer">
+                        <Typography id="SubSubContainerTypography" >{t("shopguide")}</Typography>
+                        <Typography sx={{ color: "grey", fontSize: "0.8rem", mt: 0.5,"@media (max-width:900px)":{display:"none"} }}>{t("onerequestmultiplequotes")}</Typography>
                     </Box>
                 </Box>
-                <Box sx={{ borderRight: "1px solid #ddd", borderLeft: "1px solid #ddd", width: "33%", p: 2, pr: 3, pl: 3, display: "flex" }}>
+                <Box id="Subcontainer" sx={{ borderRight: "1px solid #ddd", borderLeft: "1px solid #ddd" }}>
                     <a href="//www.google.com" target="_blank">
-                        <StorefrontTwoToneIcon sx={{ color: "darkorange", fontSize: "3.1rem" }} />
+                        <StorefrontTwoToneIcon id="SubContainerIcon" />
                     </a>
-                    <Box sx={{ ml: 3 }}>
-                        <Typography sx={{ fontWeight: "bold", fontSize: "1rem" }}>{t("wanttobeseller")}</Typography>
-                        <Typography sx={{ color: "grey", fontSize: "0.8rem", mt: 0.5 }}>{t("onerequestmultiplequotes")}</Typography>
+                    <Box id="SubSubcontainer">
+                        <Typography id="SubSubContainerTypography" >{t("wanttobeseller")}</Typography>
+                        <Typography sx={{ color: "grey", fontSize: "0.8rem", mt: 0.5,"@media (max-width:900px)":{display:"none"} }}>{t("onerequestmultiplequotes")}</Typography>
                     </Box>
                 </Box>
-                <Box sx={{ width: "33%", p: 2, pr: 3, pl: 3, display: "flex" }}>
+                <Box id="Subcontainer">
                     <a href="//www.google.com" target="_blank">
-                        <SupportAgentTwoToneIcon sx={{ color: "darkorange", fontSize: "3.1rem" }} />
+                        <SupportAgentTwoToneIcon id="SubContainerIcon"/>
                     </a>
-                    <Box sx={{ ml: 3 }}>
-                        <Typography sx={{ fontWeight: "bold", fontSize: "1rem" }}>{t("websiteguide")}</Typography>
-                        <Typography sx={{ color: "grey", fontSize: "0.8rem", mt: 0.5 }}>{t("onerequestmultiplequotes")}</Typography>
+                    <Box id="SubSubcontainer">
+                        <Typography id="SubSubContainerTypography" >{t("websiteguide")}</Typography>
+                        <Typography sx={{ color: "grey", fontSize: "0.8rem", mt: 0.5,"@media (max-width:900px)":{display:"none"} }}>{t("onerequestmultiplequotes")}</Typography>
                     </Box>
                 </Box>
             </Box>
 
-            <Box sx={{
-                backgroundColor: "white", height: "auto", minHeight: "440px", width: "90%", boxSizing: "border-box"
-                , margin: "0 auto", borderRadius: "10px", transform: "translateY(-30px)", display: "flex", p: 2
-            }}>
-
+            <Box id="Slidercontainer">
                 <Box sx={{ width: "100%", backgroundColor: "white", boxSizing: "border-box" }}>
                     {/* <SimpleImageSlider
                         width="49%"
@@ -133,9 +127,8 @@ const Dashboard = ({ subTitle }) => {
                     <Slider {...settings}>
                         {images.map((itm, index) => {
                             return (
-                                <Box sx={{
-                                    height: "380px", backgroundImage: `url(/${itm.url})`, backgroundRepeat: "no-repeat"
-                                    , backgroundSize: "cover", backgroundPosition: "center"
+                                <Box id="slider" sx={{
+                                    backgroundImage: `url(/${itm.url})`
                                 }} />
                             )
                         })}
@@ -143,7 +136,7 @@ const Dashboard = ({ subTitle }) => {
                 </Box>
             </Box>
             <Box>
-                <Typography sx={{ cursor: "pointer", width: "90%", margin: "0 auto", fontSize: "1.4rem", fontWeight: "600", mb: 2, direction: theme.palette.mode == "light" ? "rtl" : "ltr" }}>{t("quicksale")}</Typography>
+                <Typography sx={{ cursor: "pointer","@media (max-width:900px)":{fontSize:"1.2rem"}, width: "90%", margin: "0 auto", fontSize: "1.4rem", fontWeight: "600", mb: 2, direction: theme.palette.mode == "light" ? "rtl" : "ltr" }}>{t("quicksale")}</Typography>
             </Box>
             <Box sx={{ width: "90%", margin: "0 auto", borderRadius: "10px", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 2 }}>
                 <Card3 id={11} img1="/images/srcImgs/Card3Imgs/download4.png" />
@@ -153,9 +146,9 @@ const Dashboard = ({ subTitle }) => {
                 <Card3 id={12} img1="/images/srcImgs/Card3Imgs/download2.png" />
             </Box>
             <Box>
-                <Typography sx={{ cursor: "pointer", width: "90%", margin: "0 auto", fontSize: "1.4rem", fontWeight: "600", mb: 2, direction: theme.palette.mode == "light" ? "rtl" : "ltr" }}>{t("discounters")}</Typography>
+                <Typography sx={{ cursor: "pointer", width: "90%", margin: "0 auto", fontSize: "1.4rem", fontWeight: "600","@media (max-width:900px)":{fontSize:"1.2rem"}, mb: 2, direction: theme.palette.mode == "light" ? "rtl" : "ltr" }}>{t("discounters")}</Typography>
             </Box>
-            <Box sx={{ width: "90%", margin: "0 auto", borderRadius: "10px", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 2 }}>
+            <Box sx={{ width: "90%", margin: "0 auto", borderRadius: "10px", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 2,"@media(max-width:900px)":{gap:1} }}>
                 <Card3 id={11} img1="/images/srcImgs/Card3Imgs/download1.png" />
                 <Card3 id={12} img1="/images/srcImgs/Card3Imgs/download2.png" />
                 <Card3 id={13} img1="/images/srcImgs/Card3Imgs/download3.png" />
@@ -163,7 +156,7 @@ const Dashboard = ({ subTitle }) => {
                 <Card3 id={12} img1="/images/srcImgs/Card3Imgs/download5.png" />
             </Box>
             <Box>
-                <Typography sx={{ cursor: "pointer", width: "90%", margin: "0 auto", fontSize: "1.4rem", fontWeight: "600", mb: 1, direction: theme.palette.mode == "light" ? "rtl" : "ltr" }}>{t("newest")}</Typography>
+                <Typography sx={{ cursor: "pointer", width: "90%", margin: "0 auto", fontSize: "1.4rem","@media (max-width:900px)":{fontSize:"1.2rem"}, fontWeight: "600", mb: 1, direction: theme.palette.mode == "light" ? "rtl" : "ltr" }}>{t("newest")}</Typography>
             </Box>
             <Box sx={{ width: "90%", m: "0 auto", borderRadius: "10px", boxSizing: "border-box" }}>
                 <Slider {...settingsCard} rows={2} centerMode={true} style={{ paddingTop: "2%" }} >
@@ -182,7 +175,7 @@ const Dashboard = ({ subTitle }) => {
                 </Slider>
             </Box>
             <Box>
-                <Typography sx={{ cursor: "pointer", width: "90%", margin: "0 auto", fontSize: "1.4rem", fontWeight: "600", mb: 2, direction: theme.palette.mode == "light" ? "rtl" : "ltr" }}>{t("popular")}</Typography>
+                <Typography sx={{ cursor: "pointer", width: "90%", margin: "0 auto", fontSize: "1.4rem","@media (max-width:900px)":{fontSize:"1.2rem"}, fontWeight: "600", mb: 2, direction: theme.palette.mode == "light" ? "rtl" : "ltr" }}>{t("popular")}</Typography>
             </Box>
             <Box sx={{ width: "90%", margin: "0 auto", borderRadius: "10px", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 2 }}>
                 <Card2 id={11} />
@@ -199,7 +192,7 @@ const Dashboard = ({ subTitle }) => {
                 <Card4 id={14} img1="images/srcImgs/Card4Imgs/download4.png" Icon={RocketLaunchIcon} color="darkBlue" />
             </Box> */}
             <Box>
-                <Typography sx={{ cursor: "pointer", width: "90%", margin: "0 auto", fontSize: "2rem", fontWeight: "600", mb: 1, display: "flex", justifyContent: "space-between", direction: theme.palette.mode == "light" ? "rtl" : "ltr" }}><Typography sx={{ fontSize: "1.4rem", fontWeight: "600" }}>{t("suppliers")}</Typography>{theme.palette.mode == "dark" ? <ArrowForwardIcon sx={{ fontSize: "2rem", fontWeight: "600" }} /> : <ArrowBackIcon sx={{ fontSize: "2rem", fontWeight: "600" }} />} </Typography>
+                <Typography sx={{ cursor: "pointer", width: "90%", margin: "0 auto", fontSize: "2rem", fontWeight: "600", mb: 1, display: "flex", justifyContent: "space-between", direction: theme.palette.mode == "light" ? "rtl" : "ltr" }}><Typography sx={{ fontSize: "1.4rem", fontWeight: "600","@media (max-width:900px)":{fontSize:"1.2rem"} }}>{t("suppliers")}</Typography>{theme.palette.mode == "dark" ? <ArrowForwardIcon sx={{ fontSize: "2rem", fontWeight: "600" }} /> : <ArrowBackIcon sx={{ fontSize: "2rem", fontWeight: "600","@media (max-width:900px)":{fontSize:"1.5rem"} }} />} </Typography>
             </Box>
             <Box sx={{ display: "flex", width: "90%", margin: "0 auto", mb: 1, flexWrap: "wrap" }}>
                 <IconButton><img
@@ -207,40 +200,40 @@ const Dashboard = ({ subTitle }) => {
                     alt="HTML tutorial"
                     style={{ width: "40px", minWidth: "40px", minHeight: "40px", height: "40px" }}
 
-                /><Typography sx={{ fontSize: "1.1rem", ml: 1, mr: 3, color: "black" }}>France</Typography></IconButton>
+                /><Typography id="suppliersName">France</Typography></IconButton>
                 <IconButton><img
                     src="/images/icons/icons8-germany-48.png"
                     alt="HTML tutorial"
                     style={{ width: "40px", minWidth: "40px", minHeight: "40px", height: "40px" }}
 
-                /><Typography sx={{ fontSize: "1.1rem", ml: 1, mr: 3, color: "black" }}>Germany</Typography></IconButton>
+                /><Typography id="suppliersName">Germany</Typography></IconButton>
                 <IconButton><img
                     src="/images/icons/icons8-great-britain-48.png"
                     alt="HTML tutorial"
                     style={{ width: "40px", minWidth: "40px", minHeight: "40px", height: "40px" }}
 
-                /><Typography sx={{ fontSize: "1.1rem", ml: 1, mr: 3, color: "black" }}>UK</Typography></IconButton>
+                /><Typography id="suppliersName">UK</Typography></IconButton>
                 <IconButton><img
                     src="/images/icons/icons8-iran-48.png"
                     alt="HTML tutorial"
                     style={{ width: "40px", minWidth: "40px", minHeight: "40px", height: "40px" }}
 
-                /><Typography sx={{ fontSize: "1.1rem", ml: 1, mr: 3, color: "black" }}>Iran</Typography></IconButton>
+                /><Typography id="suppliersName">Iran</Typography></IconButton>
                 <IconButton><img
                     src="/images/icons/icons8-united-arab-emirates-48.png"
                     alt="HTML tutorial"
                     style={{ width: "40px", minWidth: "40px", minHeight: "40px", height: "40px" }}
 
-                /><Typography sx={{ fontSize: "1.1rem", ml: 1, mr: 3, color: "black" }}>United Arab Emirates</Typography></IconButton>
+                /><Typography id="suppliersName">United Arab Emirates</Typography></IconButton>
                 <IconButton><img
                     src="/images/icons/icons8-usa-48.png"
                     alt="HTML tutorial"
                     style={{ width: "40px", minWidth: "40px", minHeight: "40px", height: "40px" }}
 
-                /><Typography sx={{ fontSize: "1.1rem", ml: 1, mr: 3, color: "black" }}>USA</Typography></IconButton>
+                /><Typography id="suppliersName">USA</Typography></IconButton>
             </Box>
-            <Box sx={{ width: "100%", height: "600px", bgcolor: "#445268", display: "flex" }}>
-                <Typography sx={{ color: "white", fontSize: "8rem", margin: "auto auto" }}>Some Stuff</Typography>
+            <Box id="bottomBar">
+                <Typography id="bottomBarText" >Some Stuff</Typography>
             </Box>
         </Box>
     )

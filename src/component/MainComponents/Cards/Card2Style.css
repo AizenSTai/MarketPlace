@@ -1,0 +1,52 @@
+#container {
+    min-width: 275px;
+    max-width: 450px;
+    width: 32%;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    cursor: pointer;
+}
+
+#BigText {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 800
+}
+
+#Button {
+    background-color: orange;
+    font-size: 1rem;
+    margin: 0 auto;
+    border-radius: 25px;
+    min-width: 120px;
+    height: 40px
+}
+
+@media screen and (max-width:900px) {
+    #container {
+        min-width: 140px;
+        width: 32%;
+        height: 120px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    #Trophyimg {
+        height: 50px;
+    }
+
+    #BigText {
+        font-size: 0.6rem;
+    }
+
+    #SmallText {
+        font-size: 0.6rem;
+    }
+    #Button{
+        font-size: 0.8rem;
+        min-width: 60px;
+        height: 30px;
+        border-radius: 10px;
+    }
+}

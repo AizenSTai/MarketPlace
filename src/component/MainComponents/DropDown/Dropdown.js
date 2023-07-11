@@ -57,6 +57,7 @@ import { ColorModeContext, tokens } from '../../../theme';
 import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import "./style.css"
 import { useTranslation } from 'react-i18next';
 import { useContext } from 'react';
 export default function MenuPopupState(props) {
@@ -70,13 +71,13 @@ export default function MenuPopupState(props) {
       {(popupState) => (
         <React.Fragment>
           <Box
-            id="demo-positioned-button"
+            id="containerBox"
             aria-haspopup="true"
-            sx={{ color: "black", cursor: "pointer", display: "flex", mt: "auto",boxSizing:"border-box",pr:2,pl:2, mb: "auto",borderLeft:`${border}px solid #ddd` }}
+            sx={{pr:2,pl:2,borderLeft:`${border}px solid #ddd` }}
             {...bindTrigger(popupState)}
           >
-            {left && icon}            
-            {icon2 ? icon2 : <Typography sx={{ fontSize: "1rem" }}>{title}</Typography>}
+            {left && icon}
+            {icon2 ? icon2 : <Typography id='dropdownTitle' sx={{ fontSize: "1rem"}}>{title}</Typography>}
             {!left && icon}
           </Box>
           {type === "lang" &&

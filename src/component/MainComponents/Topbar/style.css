@@ -1,0 +1,50 @@
+#navigateButton {
+    font-size: 1.2rem
+}
+
+#searchBoxContainer {
+    direction: rtl;
+    margin-right: auto;
+    margin-left: auto;
+    height: 40px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    width: 60%;
+    margin-top: 1rem;
+}
+
+#inputBase {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 1rem;
+    color: black;
+    direction: rtl;
+}
+
+#iconButton {
+    background-color: orange;
+    width: 100px;
+    color: white;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+@media screen and (max-width:900px) {
+    #navigateButton {
+        font-size: 0.9rem
+    }
+    #inputBase{
+        font-size: 0.8rem;
+    }
+    #searchBoxContainer {
+        width: 90%;
+        height: 35px;
+    }
+    #toTop{
+        height: 200px;
+    }
+}

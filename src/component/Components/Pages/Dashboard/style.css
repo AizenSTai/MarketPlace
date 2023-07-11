@@ -1,0 +1,126 @@
+#Triplecontainer {
+    background-color: white;
+    height: 80px;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 10px;
+    transform: translateY(-50px);
+    display: flex
+}
+
+#Subcontainer {
+    width: 33%;
+    padding: 16px;
+    padding-right: 24px;
+    padding-left: 24px;
+    display: flex
+}
+
+#SubSubcontainer {
+    margin-left: 24px
+}
+
+#SubContainerIcon {
+    color: darkorange;
+    font-size: 3.1rem
+}
+
+#SubSubContainerTypography {
+    font-weight: bold;
+    font-size: 1rem;
+    direction: rtl
+}
+
+#Slidercontainer {
+    background-color: white;
+    height: 440px;
+    width: 90%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    border-radius: 10px;
+    transform: translateY(-30px);
+    display: flex;
+    padding: 16px
+}
+
+#slider {
+    height: 380px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#bottomBar {
+    width: 100%;
+    height: 600px;
+    background-color: #445268;
+    display: flex
+}
+
+#bottomBarText {
+    color: white;
+    font-size: 8rem;
+    margin: auto auto
+}
+
+#suppliersName {
+    font-size: 1.1rem;
+    margin-left: 8px;
+    margin-right: 24px;
+    color: black
+}
+
+@media screen and (max-width: 900px) {
+    #Triplecontainer {
+        height: 60px;
+        transform: translateY(-40px);
+    }
+
+    #Subcontainer {
+        padding: 1px;
+        padding-right: 1.5px;
+        padding-left: 1.5px;
+        justify-content: center;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    #SubSubcontainer {
+        margin-left: 1.5px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    #SubContainerIcon {
+        font-size: 2rem;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    #SubSubContainerTypography {
+        font-size: 0.7rem;
+        direction: rtl;
+    }
+
+    #Slidercontainer {
+        height: 200px
+    }
+
+    #slider {
+        height: 170px;
+    }
+
+    #bottomBar {
+        height: 200px;
+    }
+
+    #bottomBarText {
+        font-size: 3rem;
+    }
+
+    #suppliersName {
+        font-size: 0.9rem;
+        margin-left: 0.5px;
+        margin-right: 0.5px;
+    }
+}
