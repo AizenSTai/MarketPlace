@@ -12,12 +12,16 @@ import {
   Popover,
   Divider,
   useMediaQuery,
+  TextField,
+  Chip
 } from "@mui/material";
 import Dropdown from "../DropDown/Dropdown";
 import { Link, useNavigate } from "react-router-dom";
-import { Search } from "@mui/icons-material";
+import { Search, TextFields } from "@mui/icons-material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../../theme";
+import ChipSearchBar from "../ChipSearchBar/ChipSearchBar"
+import Catdropdown from "../CategoriesDropdown/CatDropdown"
 import "./style.css"
 import json2mq from "json2mq";
 // import Clock from "react-live-clock"
@@ -37,12 +41,17 @@ import { useTranslation } from "react-i18next";
 
 const Topbar = (props) => {
   const { t, i18n } = useTranslation();
+  const [searchChips,setSearchChips] = useState([])
   const { page } = props;
   const theme = useTheme();
   const navigate = useNavigate();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
 
+  const SearchbarHandler = (event) => {
+    const keyWords = event.target.value.split(" ")
+    setSearchChips(keyWords)    
+  }
   return (
     <Box
       id="toTop"
@@ -209,15 +218,17 @@ const Topbar = (props) => {
         </Box>
         <Box
           id="searchBoxContainer"
-          sx={{            
-          }}
+          sx={{overflow :"hidden"}}
         >
-          <InputBase
+          <Catdropdown/>
+          {/* <InputBase
             id="inputBase"
-            sx={{
-            }}
+            onChange={SearchbarHandler}
+            sx={{width:"100%"}}
+            // value = {}
             placeholder={t("whatareyoulookingfor")}
-          />
+          /> */}
+          <ChipSearchBar/>
           <Box sx={{ display: "flex" }}>
             {/* <IconButton type="button" sx={{}}>
               <PhotoCameraOutlinedIcon                

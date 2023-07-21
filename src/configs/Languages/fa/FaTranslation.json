@@ -29,7 +29,7 @@
   "fabric": "پارچه و محصولات خام نساجی",
   "food": "تغذیه",
   "apparel": "پوشاک",
-  "electerical": "وسایل الکتریکی",
+  "electerical": "الکتریکی",
   "samplebasedcustomization":"سفارشی سازی بر اساس نمونه",
   "qualitymanagementcertified":"دارای گواهی مدیریت کیفیت",
   "minorcustomization":"سفارشی سازی جزیی",
@@ -64,5 +64,7 @@
   "sellrate":"پرفروش ترین",
   "mostpopular":"محبوب ترین",
   "cityfilter":"فیلتر شهر",
-  "buffet":"بوفه"
+  "buffet":"بوفه",
+  "group":"گروه",
+  "allgroups":"همه گروه ها"
 }

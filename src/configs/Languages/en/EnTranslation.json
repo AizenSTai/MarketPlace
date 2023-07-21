@@ -64,5 +64,7 @@
   "sellrate":"Most demands",
   "mostpopular":"Most Popular",
   "cityfilter":"city filter",
-  "buffet":"Buffet"
+  "buffet":"Buffet",
+  "group":"Group",
+  "allgroups":"All groups"
 }

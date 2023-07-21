@@ -9,11 +9,11 @@ const Card1 = (props) => {
     const TrophyImg = styled('img')({
         width: '100%',
         height: '120px',
-        opacity: "95%",        
+        opacity: "95%",
     })
     const navigate = useNavigate()
     return (
-        <Box id="container"
+        <Box id="container" sx={{minWidth:"400px"}}
          onClick={()=>{navigate(`/products/${id}`)}}>
             <Box sx={{ boxSizing:"border-box",p: 2,"@media (max-width:900px)":{p:0.5} }}>
                 {/* {!Bools && <Typography sx={{ fontSize: "1rem", fontWeight: "800" }}>{t("newarrivals")}</Typography>} */}
