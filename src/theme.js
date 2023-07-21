@@ -102,7 +102,7 @@ export const themeSettings = (mode)=>{
             //     },
             // })
             primary:{
-                main:"#fff",
+                main:"#000",
             },secondary:{
                 main:"#fff",
 

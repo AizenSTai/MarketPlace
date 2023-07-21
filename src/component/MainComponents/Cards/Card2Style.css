@@ -1,4 +1,4 @@
-#container {
+#card-two-container {
     min-width: 275px;
     max-width: 450px;
     width: 32%;
@@ -6,6 +6,7 @@
     border-radius: 10px;
     margin-bottom: 24px;
     cursor: pointer;
+    background-color: white;
 }
 
 #BigText {
@@ -22,26 +23,58 @@
     min-width: 120px;
     height: 40px
 }
-
+#card-two-general-container{
+    display: flex;
+    padding: 16px;
+    margin-top: 8px;
+    justify-content: space-between;
+    position: relative;
+    height:200px
+}
+#card-two-sub-container{
+    width: 40%;
+    height: 150px;
+}
+#card-two-image-container{
+    cursor: pointer;
+    border-radius: 10px;
+    height: 100px;
+    margin-bottom: 16px
+}
+#card-two-big-text{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 800
+}
+#card-two-small-text{
+    text-align: center;
+    font-size: 1.1rem;
+    color: grey
+}
 @media screen and (max-width:900px) {
-    #container {
-        min-width: 140px;
-        width: 32%;
+    #card-two-container {
+        min-width: 150px;
+        width: 45%;
         height: 120px;
         border-radius: 10px;
         margin-bottom: 10px;
     }
 
-    #Trophyimg {
-        height: 50px;
+    #card-two-image-container{
+        height: 60px;
+        margin-bottom: 4px;
     }
-
-    #BigText {
-        font-size: 0.6rem;
+    #card-two-general-container{
+        padding: 4px;
     }
-
-    #SmallText {
-        font-size: 0.6rem;
+    #card-two-sub-container{
+        height: 85px;
+    }
+    #card-two-big-text {
+        font-size: 0.8rem;
+    }
+    #card-two-small-text {
+        font-size: 0.7rem;
     }
     #Button{
         font-size: 0.8rem;

@@ -4,7 +4,10 @@ import Dashboard from "../../component/Components/Pages/Dashboard/Dashboard"
 import Products from "../../component/Components/Pages/Products/Products"
 import DashboardLite from "../../component/Components/Pages/DashboardLite/DashboardLite"
 import Sellers from "../../component/Components/Pages/Sellers/Sellers"
+import SellerDashboard from "../../component/Components/Pages/SellerDashboard/SellerDashboard"
+import AdminDashboard from "../../component/Components/Pages/AdminDashboard/AdminDashboard"
 import Error from "../../component/Components/Pages/Error/Error"
+
 const MRoutes = () => {
     return (
         <Routes>
@@ -14,6 +17,8 @@ const MRoutes = () => {
                 <Route path="/products/:id" element={<Products />} />
                 <Route path="/sellers" element={<DashboardLite />} />
                 <Route path="/sellers/:id" element={<Sellers />} />
+                <Route path="/sellerdashboard" element={<SellerDashboard />} />
+                <Route path="/admindashboard" element={<AdminDashboard />} />
             </Route>
             <Route path="*" element={<Error />} />
             <Route path="404" element={<Error />} />

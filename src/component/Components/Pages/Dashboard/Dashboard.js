@@ -17,25 +17,32 @@ import "slick-carousel/slick/slick-theme.css";
 import "./style.css"
 import Slider from "react-slick";
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { ArrowBackIos } from "@mui/icons-material";
+import { ArrowForwardIos } from "@mui/icons-material";
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
-        <div
-            className={className}
-            style={{ ...style, display: "block", right: "0", zIndex: "999", background: "grey" }}
-            onClick={onClick}
-        />
+        // <div
+        //     className={className}
+        //     style={{ ...style, display: "block", right: "0", zIndex: "999", background: "grey" }}
+        //     onClick={onClick}
+        // />
+        <IconButton onClick={onClick} sx={{position:"absolute",top:"43%",right:0,":hover":{backgroundColor:"transparent"}}}>
+            <ArrowForwardIos style={{ display: "block",fontSize:"2.5rem", zIndex: "999" }} />
+        </IconButton>
     );
 }
 function SamplePrevArrow(props) {
     const { className, style, onClick } = props;
-    console.log(props)
     return (
-        <div
-            className={className}
-            style={{ ...style, display: "block", left: "0", zIndex: "999", background: "grey" }}
-            onClick={onClick}
-        />
+        // <div
+        //     className={className}
+        //     style={{ ...style, display: "block", left: "0", zIndex: "999", background: "grey" }}
+        //     onClick={onClick}
+        // />
+        <IconButton onClick={onClick} sx={{position:"absolute",top:"43%",left:0,":hover":{backgroundColor:"transparent"}}}>
+            <ArrowBackIos style={{ m:"auto auto",display: "block",fontSize:"2.5rem", zIndex: "999" }} />
+        </IconButton>
     );
 }
 
@@ -67,15 +74,6 @@ const Dashboard = ({ subTitle }) => {
         prevArrow: <SamplePrevArrow />
     };
 
-    
-    useEffect(()=>{
-        window.addEventListener("wheel",()=>{
-                console.log(document.body.scrollTop)
-        })
-        return ()=>{
-            window.removeEventListener("wheel",()=>{})
-        }
-    },[])
     return (
         <Box  sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
             <Topbar page="products" />            

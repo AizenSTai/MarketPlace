@@ -14,15 +14,15 @@ const Card3 = (props) => {
     })
 
     return (
-        <Box id="container" sx={{ "&:hover":{boxShadow: '0px 0px 20px #00000030 !important'} }} 
+        <Box id="card-three-container" sx={{ "&:hover":{boxShadow: '0px 0px 20px #00000030 !important'} }} 
         onClick={()=>{navigate(`/products/${id}`)}}>
-            <Box id="Trophyimg" sx={{ cursor: "pointer", borderRadius: "10px", height: "200px", mb: 1 }}>
-                <TrophyImg id="Trophyimg" src={img1} />
+            <Box id="card-three-image-container">
+                <TrophyImg id="card-three-image" src={img1} />
             </Box>
-            <Box id="TextContainer">
-                <Typography id="SmallText">HL manufacturer wholesale drop shoulder vintage blank...</Typography>
-                <Typography id="BigText">{t("currency")} 6 - {t("currency")} 8</Typography>
-                <Typography id="SmallText">MOQ: 3 {t("sets")}</Typography>
+            <Box id="card-three-text-container">
+                <Typography id="card-three-small-text">HL manufacturer wholesale drop shoulder vintage blank...</Typography>
+                <Typography id="card-three-big-text">{t("currency")} 6 - {t("currency")} 8</Typography>
+                <Typography id="card-three-small-text">MOQ: 3 {t("sets")}</Typography>
             </Box>
         </Box>
     )

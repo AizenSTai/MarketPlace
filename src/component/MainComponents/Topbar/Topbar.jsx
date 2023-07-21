@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import Dropdown from "../DropDown/Dropdown";
 import { Link, useNavigate } from "react-router-dom";
-import { Search, TextFields } from "@mui/icons-material";
+import { ArrowBackIos, Search, TextFields } from "@mui/icons-material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../../theme";
 import ChipSearchBar from "../ChipSearchBar/ChipSearchBar"
@@ -38,20 +38,16 @@ import PhotoCameraOutlinedIcon from "@mui/icons-material/PhotoCameraOutlined";
 import { json } from "react-router-dom";
 import { useState, Fragment } from "react";
 import { useTranslation } from "react-i18next";
+import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
+import EngineeringOutlinedIcon from '@mui/icons-material/EngineeringOutlined';
 
 const Topbar = (props) => {
   const { t, i18n } = useTranslation();
-  const [searchChips,setSearchChips] = useState([])
   const { page } = props;
   const theme = useTheme();
   const navigate = useNavigate();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
-
-  const SearchbarHandler = (event) => {
-    const keyWords = event.target.value.split(" ")
-    setSearchChips(keyWords)    
-  }
   return (
     <Box
       id="toTop"
@@ -97,7 +93,7 @@ const Topbar = (props) => {
           }}
         >
           <Box sx={{ display: "flex", width: "40%", justifyContent: "left" }}>
-            <Dropdown
+            {/* <Dropdown
               title={t("categories")}
               left={true}
               icon={
@@ -106,7 +102,13 @@ const Topbar = (props) => {
                   sx={{ mt: "auto", mb: "auto", mr: 1, ml: 2 }}
                 />
               }
-            />
+            /> */}
+            <IconButton sx={{mr:2,ml:2}} onClick={()=>{navigate("/sellerdashboard")}}>
+              <ManageAccountsOutlinedIcon sx={{fontSize:"2rem"}}/>
+            </IconButton>
+            <IconButton sx={{mr:2,ml:2}} onClick={()=>{navigate("/admindashboard")}}>
+              <EngineeringOutlinedIcon sx={{fontSize:"2rem"}}/>
+            </IconButton>
           </Box>
           <Box sx={{ display: "flex", width: "60%", justifyContent: "right" }}>
             <Dropdown
@@ -169,7 +171,7 @@ const Topbar = (props) => {
               title={t("more")}
               icon={<ExpandMoreIcon sx={{ fontSize: "1rem", mt: "auto" }} />}
               border="1"
-            />
+            />            
           </Box>
         </Box>
       </Box>

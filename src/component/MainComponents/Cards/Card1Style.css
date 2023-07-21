@@ -1,4 +1,4 @@
-#container {
+#card-one-container {
     min-width: 375px;
     max-width: 450px;
     width: 32%;
@@ -8,25 +8,62 @@
     cursor: pointer;
     background-color: white
 }
-#BigText{
-    text-align:center;font-size:0.9rem;font-weight:800
+#card-one-big-text{
+    text-align:center;
+    font-size:0.9rem;
+    font-weight:800
 }
-
+#card-one-general-container{
+    display: flex;
+    margin-top: 8px;
+    box-sizing:border-box;
+    padding: 16px;
+    justify-content: space-between;
+    position: relative
+}
+#card-one-sub-container{
+    width: 32%;
+    height: 100px;
+}
+#card-one-small-text{
+    text-align:center;
+    font-size:0.8rem;
+    color:grey;
+}
+#card-one-image-container{
+    background-color: rgba(0,0,0,0.4);
+    cursor: pointer;
+    border-radius: 10px;
+    height:120px;
+    margin-bottom: 4px
+}
 @media screen and (max-width:900px) {
-    #container {
+    #card-one-container {
         min-width: 180px;
         width: 32%;
-        height: 120px;
+        height: 100px;
         border-radius: 10px;
         margin-bottom: 10px;
     }
-    #Trophyimg{
+    #card-one-general-container{
+        margin-top: 1px;
+        padding: 4px;
+    }
+    #card-one-image{
         height: 60px;
     }
-    #BigText{
+    #card-one-big-text{
         font-size: 0.6rem;
     }
-    #SmallText{
+    #card-one-small-text{
         font-size: 0.6rem;
+    }
+    #card-one-sub-container{
+        width: 32%;
+        height: 40px;
+    }
+    #card-one-image-container{
+        height:60px;
+        margin-bottom: 1px
     }
 }
