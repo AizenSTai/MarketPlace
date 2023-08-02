@@ -7,7 +7,7 @@ import { DataGrid, GridColDef, GridApi, GridCellValue, GridToolbarQuickFilter, G
 // import { GridToolbar } from '@mui/x-data-grid'
 // import { GridToolbarExport } from '@mui/x-data-grid'
 import Typography from '@mui/material/Typography'
-import { TextField, MenuItem, Select, InputAdornment, FormControl, InputLabel ,Button} from '@mui/material'
+import { TextField, MenuItem, Select, InputAdornment, FormControl, InputLabel ,Button, Chip} from '@mui/material'
 // import { Toolbar } from '@mui/material'
 import { NumberFormatBase, NumericFormat } from 'react-number-format'
 import { Information, Script } from 'mdi-material-ui'
@@ -48,6 +48,7 @@ export default function AddProducts(props) {
   const [available, setAvailable] = useState(null)
   const [made, setMade] = useState(null)
   const [cost, setCost] = useState(null)
+  const [keyWords, setKeyWords] = useState([])
   const [selectItem, setSelectItem] = useState("")
   const [selectAvailableItem, setSelectAvailableItem] = useState("")
   const [imageFile, setImageFile] = useState(null)
@@ -65,26 +66,27 @@ export default function AddProducts(props) {
       flex: 0.4,
       headerAlign: 'center',
     },
-    {
-      field: 'product',
-      headerName: 'نوع کالا',
-      headerClassName: 'super-app-theme--header',
-      flex: 1.5,
-      headerAlign: 'center',
+    // {
+    //   field: 'product',
+    //   headerName: 'نوع کالا',
+    //   headerClassName: 'super-app-theme--header',
+    //   flex: 1.5,
+    //   headerAlign: 'center',
 
-    },
-    {
-      field: 'made',
-      headerName: 'ساخت',
-      headerClassName: 'super-app-theme--header',
-      flex: 1.5,
-      headerAlign: 'center'
-    },
+    // },
+    // {
+    //   field: 'made',
+    //   headerName: 'ساخت',
+    //   headerClassName: 'super-app-theme--header',
+    //   flex: 1.5,
+    //   headerAlign: 'center'
+    // },
     {
       width: 75,
       field: 'image',
       headerAlign: 'center',
       headerName: 'عکس',
+      flex:5,
       headerClassName: 'super-app-theme--header',
       renderCell: params => {
         // console.log(params.formattedValue)
@@ -97,14 +99,14 @@ export default function AddProducts(props) {
       field: 'info',
       headerName: 'مشخصات کالا',
       headerClassName: 'super-app-theme--header',
-      flex: 5,
+      flex: 10,
       headerAlign: 'center'
     },
     {
       field: 'available',
       headerName: 'موجودی',
       headerClassName: 'super-app-theme--header',
-      flex: 5,
+      flex: 2,
       headerAlign: 'center',
       renderCell :params =>{
         // console.log(params)
@@ -151,6 +153,7 @@ export default function AddProducts(props) {
     setproduct(prop.row.product)
     setMade(prop.row.made)
     setImageFile(prop.row.image)
+    // KeywordsFunction()
   }
   const onDeleteClickhandler = () => {
     const rowsDouble = rows
@@ -187,6 +190,18 @@ export default function AddProducts(props) {
   }
   const infoOnchangehandler = (prop) => {
     setInfo(prop.target.value)
+    KeywordsFunction()
+  }
+  const KeywordsFunction =()=>{
+    if(info){
+      const words = info.split(" ")
+      const wordsfiltered = words.filter(word =>{
+        if(word.length > 1){
+          return word
+        }
+      })
+      setKeyWords(wordsfiltered)
+    }
   }
   const madeOnchangehandler = (prop) => {
     setMade(prop.target.value)
@@ -303,50 +318,9 @@ export default function AddProducts(props) {
   const inputRef = useRef();
   return (
     <Box sx={{ height: "auto", width: '100%' }}>
-      <Box sx={{ margin: "0 auto", width: "40%", mb: 6,mt:6 }}>
-        <Typography sx={{ border: "1px solid gray", pl: 25, pr: 25, pb: 2, pt: 2, color: "black", borderRadius: "50px", fontSize: "1.375rem", textAlign: "center" }}>لیست کالا</Typography>
-      </Box>
-      <Box sx={{ display: "flex", justifyContent: "left" }}>
-        <Button variant='contained' sx={{ ml: 3 }} onClick={Subtract2PercentClickhandler}>کاهش -1% قیمت</Button>
-        <Button variant='contained' sx={{ ml: 3 }} onClick={add2PercentClickhandler}>افزایش +1% قیمت</Button>
-      </Box>
-      <DataGrid
-        disableExtendRowFullWidth={false}
-        sx={{
-          '& .super-app-theme--header': { backgroundColor: "darkorange", color: "white" },
-          boxShadow: 2,
-          backgroundColor: 'lightyellow',
-          mt: 2,
-          ml: 3,
-          mb: 6,
-          mr: 3,
-          color: '#320d3e',
-          fontWeight: 800,
-          height: 500,
-          fontSize: "1rem",
-          direction: 'rtl',
-          '@media (max-width:1199px)': {
-            '& .super-app-theme--header': {
-              fontSize: "0.9rem"
-            }
-          }
-        }}
-        rows={rows}
-        columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
-        components={{ Toolbar: CustomToolbar }}
-        onCellDoubleClick={onCellClickhandker}
-        // //this is sooooo important getRowId :)))))))))
-        // getRowId={row => row.userId}
-        getRowId={row => row.userId}
-        // getRowId={}
-        disableSelectionOnClick
-        experimentalFeatures={{ newEditingApi: true }}
-      />
       <Box sx={{ display: "flex", justifyContent: "right", flexDirection: "column", height: "auto", m: 5, mb: 5, borderRadius: "10px",bgcolor:"lightyellow", border: "1px solid #ddd" }}>
         <Box sx={{ display: "flex", m: 2, gap: "10px", justifyContent: "right", flexWrap: "wrap" }}>
-          <Box sx={{ display: "flex", width: "20%", alignSelf: "flex-start", mt: 4, position: "relative", minWidth: "200px" }}>
+          {/* <Box sx={{ display: "flex", width: "20%", alignSelf: "flex-start", mt: 4, position: "relative", minWidth: "200px" }}>
             <Typography sx={{ width: "50%", color: "black", fontSize: "1rem", alignSelf: "center", textAlign: "center" }}> انتخاب کالا :</Typography>
             <FormControl sx={{ alignSelf: "center", width: "10%" }}>
               <InputLabel></InputLabel>
@@ -367,8 +341,8 @@ export default function AddProducts(props) {
               }}
               sx={{ width: "50%", alignSelf: "center" }}
             />
-          </Box >
-          <Box sx={{ display: "flex", width: "20%", alignSelf: "flex-start", mt: 4, minWidth: "200px" }}>
+          </Box > */}
+          {/* <Box sx={{ display: "flex", width: "20%", alignSelf: "flex-start", mt: 4, minWidth: "200px" }}>
             <Typography sx={{ color: "black", fontSize: "1rem", alignSelf: "center", textAlign: "center", width: "20%", minWidth: "60px" }}>ساخت : </Typography>
             <TextField
               value={made}
@@ -382,20 +356,20 @@ export default function AddProducts(props) {
               InputLabelProps={{ shrink: false }}
               sx={{ width: "80%", alignSelf: "center" }}
             />
-          </Box>
-          <Box sx={{ display: "flex", width: "25%", alignSelf: "flex-start", mt: 4, minWidth: "250px" }}>
-            <Typography sx={{ color: "black", fontSize: "1rem", alignSelf: "center", textAlign: "center", width: "30%", minWidth: "80px" }}>مشخصات : </Typography>
+          </Box> */}
+          <Box sx={{ display: "flex", width: "45%", alignSelf: "flex-start", mt: 4, minWidth: "250px" }}>
+            <Typography sx={{ color: "black", fontSize: "1rem", alignSelf: "center", textAlign: "center", width: "20%", minWidth: "80px" }}>مشخصات کالا : </Typography>
             <TextField
               value={info}
+              multiline
               fullWidth
               defaultValue=' '
               id='info'
-              multiline
               onChange={infoOnchangehandler}
-              maxRows={2}
+              maxRows={3}
               variant='filled'
               InputLabelProps={{ shrink: false }}
-              sx={{ width: "70%", alignSelf: "center" }}
+              sx={{ width: "80%", alignSelf: "center" }}
             />
           </Box>
           <Box sx={{ display: "flex", width: "20%", alignSelf: "flex-start", mt: 4, position: "relative", minWidth: "200px" }}>
@@ -458,7 +432,7 @@ export default function AddProducts(props) {
                   inputRef.current.value = null;
                 }}
               />
-              {imgOpen && <Box sx={{ borderTop: "1px solid black", width: "200px", height: "200px" }} >
+              {true && <Box sx={{ borderTop: "1px solid black", width: "200px", height: "200px" }} >
                 {/* {console.log(fileNames)} */}
                 <Box sx={{ position: "relative" }}>
                   {imgOpen && <img style={{ position: "absolute", width: "200px", height: "200px" }} id="blah" src={imageFile} />}
@@ -471,6 +445,25 @@ export default function AddProducts(props) {
                   </ul> */}
                 </Box>
               </Box>}
+              <Box sx={{width:"50%",display:"flex"}}>
+                <Typography>کلمات کلیدی :</Typography>
+                <Box sx={{width:"80%",border:"1px solid #ddd",bgcolor:"white",borderRadius:"10px",mr:2,ml:2,minHeight:"50px",display:"flex",maxHeight:"150px",overflowY:"auto",flexWrap:"wrap"}}>
+                    {keyWords.map((itm)=>{
+                      if(itm != "بر" && itm != "ما" && itm != "هر" && itm != "از" && itm != "تا" && itm != "جا" && itm != "همه" && itm != "اما" && itm !== "برای" && itm != "تر"){
+                        // console.log(itm)
+                        return (
+                          <Chip
+                          variant="filled"
+                          label={itm}
+                          sx={{direction:"ltr",mr:1,border:"1px solid gray",bgcolor:"#ddd",mt:2}}                          
+                          />
+                          )
+                      }else{
+                        return null
+                      }
+                    })}
+                </Box>
+              </Box>
             </Box>
           </Box>
           <Box sx={{ display: "flex", gap: "5px", flex: 1, alignSelf: "flex-end", maxHeight: "40px" }}>
@@ -480,6 +473,45 @@ export default function AddProducts(props) {
           </Box>
         </Box>
       </Box>
+      {/* DataGrid Section */}
+      <Box sx={{ display: "flex", justifyContent: "left" }}>
+        <Button variant='contained' sx={{ ml: 3 }} onClick={Subtract2PercentClickhandler}>کاهش -1% قیمت</Button>
+        <Button variant='contained' sx={{ ml: 3 }} onClick={add2PercentClickhandler}>افزایش +1% قیمت</Button>
+      </Box>
+      <DataGrid
+        disableExtendRowFullWidth={false}
+        sx={{
+          '& .super-app-theme--header': { backgroundColor: "darkorange", color: "white" },
+          boxShadow: 2,
+          backgroundColor: 'lightyellow',
+          mt: 2,
+          ml: 3,
+          mb: 6,
+          mr: 3,
+          color: '#320d3e',
+          fontWeight: 800,
+          height: 500,
+          fontSize: "1rem",
+          direction: 'rtl',
+          '@media (max-width:1199px)': {
+            '& .super-app-theme--header': {
+              fontSize: "0.9rem"
+            }
+          }
+        }}
+        rows={rows}
+        columns={columns}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
+        components={{ Toolbar: CustomToolbar }}
+        onCellDoubleClick={onCellClickhandker}
+        // //this is sooooo important getRowId :)))))))))
+        // getRowId={row => row.userId}
+        getRowId={row => row.userId}
+        // getRowId={}
+        disableSelectionOnClick
+        experimentalFeatures={{ newEditingApi: true }}
+      />
       {/* <SnackbarPopUp ref={childRef} severity={'success'} message={'عملیات موفق'} />
       <SnackbarPopUp ref={childRef1} severity={'error'} message={'عملیات ناموفق'} /> */}
     </Box >

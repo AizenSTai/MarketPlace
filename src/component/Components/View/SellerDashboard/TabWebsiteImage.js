@@ -2,11 +2,12 @@
 import { useState, useEffect, useRef } from 'react'
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
+import {Box,IconButton} from '@mui/material'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 // import Languages from 'src/language/Languages'
 // import themeConfig from 'src/configs/themeConfig'
 import { DropzoneArea, DropzoneAreaBase } from 'mui-file-dropzone'
@@ -25,7 +26,7 @@ const TabWebsiteImage = () => {
   var files = []
   const childRef1 = useRef(null)
   const [message, setMessage] = useState("")
-  const [imageCount, setImageCount] = useState(5)
+  const [imageCount, setImageCount] = useState(1)
   const [arrayOfImages, setArrayOfImages] = useState([])
   const ServerImages = []
 
@@ -130,7 +131,7 @@ const TabWebsiteImage = () => {
     for (let i = 0; i < imageCount; i++) {
       const imgid = "imglogo" + (i + 1)
       const inputid = "input" + (i + 1)
-      rows.push(<Box sx={{ width: "225px", height: "225px", minWidth: "225px", border: "1px solid #ddd", mb: 12, mt: 6, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover", borderRadius: "15px" }} key={i} ><Box onDrop={(ev) => {
+      rows.push(<Box sx={{ width: "225px", height: "225px", minWidth: "225px", border: "1px solid #ddd", mb: 12,mr:2, mt: 6, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover", borderRadius: "15px" }} key={i} ><Box onDrop={(ev) => {
         ev.preventDefault()
         let data = ev.dataTransfer.getData("text")
         document.getElementById(imgid).src = data
@@ -157,8 +158,9 @@ const TabWebsiteImage = () => {
         <Box>
           <Typography sx={{ color: "black" }}>عکس های انتخابی را به ترتیب دلخواه در فیلد های زیر بکشید (اعداد زیر هر فیلد ترتیب نمایش آن عکس را در صفحه وب سایت نشان میدهد) {<br />} لزومی به پرکردن تمامی فیلد ها نیست</Typography>
         </Box>
-        <Box sx={{ border: "1px solid #ddd", borderRadius: "15px", width: "90%", margin: "0 auto", mt: 5, mb: 5,position:"relative" }}>
+        <Box sx={{ border: "1px solid #ddd", borderRadius: "15px", width: "90%", margin: "0 auto", mt: 5, mb: 5,position:"relative",display:"flex",justifyContent:"right" }}>
           <ShowImagesHandler />
+          {imageCount <5 && <IconButton sx={{width:"100px",height:"100px",mt:"auto",mb:"auto",mr:5,ml:5}} onClick={()=>{setImageCount(imageCount+1)}}><AddCircleIcon sx={{fontSize:"5rem",color:"gray"}}/></IconButton>}
         </Box>
         <Box >
           <Button variant='contained' sx={{ marginLeft: 3.5 }}>
