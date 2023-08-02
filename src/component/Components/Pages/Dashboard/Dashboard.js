@@ -68,8 +68,9 @@ const Dashboard = ({ subTitle }) => {
     };
     const settingsCard = {
         infinite: true,
-        slidesToShow: matches ? 3 : 1,
-        slidesToScroll: 1,
+        autoplay:true,
+        slidesToShow: matches ? 5 : 3,
+        slidesToScroll: 2,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
@@ -83,27 +84,35 @@ const Dashboard = ({ subTitle }) => {
                         <LocalMallTwoToneIcon id="SubContainerIcon" />
                     </a>
                     <Box id="SubSubcontainer">
-                        <Typography id="SubSubContainerTypography" >{t("shopguide")}</Typography>
-                        <Typography sx={{ color: "grey", fontSize: "0.8rem", mt: 0.5,"@media (max-width:900px)":{display:"none"} }}>{t("onerequestmultiplequotes")}</Typography>
+                        <a href="//www.google.com" style={{textDecoration:"none",color:"black"}} target="_blank">
+                            <Typography id="SubSubContainerTypography" >{t("shopguide")}</Typography>
+                            <Typography sx={{ color: "grey", fontSize: "0.8rem", mt: 0.5,"@media (max-width:900px)":{display:"none"} }}>{t("onerequestmultiplequotes")}</Typography>
+                        </a>
                     </Box>
                 </Box>
                 <Box id="Subcontainer" sx={{ borderRight: "1px solid #ddd", borderLeft: "1px solid #ddd" }}>
                     <a href="//www.google.com" target="_blank">
                         <StorefrontTwoToneIcon id="SubContainerIcon" />
                     </a>
+                    <a href="//www.google.com" style={{textDecoration:"none",color:"black"}} target="_blank">
+
                     <Box id="SubSubcontainer">
                         <Typography id="SubSubContainerTypography" >{t("wanttobeseller")}</Typography>
                         <Typography sx={{ color: "grey", fontSize: "0.8rem", mt: 0.5,"@media (max-width:900px)":{display:"none"} }}>{t("onerequestmultiplequotes")}</Typography>
                     </Box>
+                    </a>
                 </Box>
                 <Box id="Subcontainer">
                     <a href="//www.google.com" target="_blank">
                         <SupportAgentTwoToneIcon id="SubContainerIcon"/>
                     </a>
+                    <a href="//www.google.com" style={{textDecoration:"none",color:"black"}} target="_blank">
+
                     <Box id="SubSubcontainer">
                         <Typography id="SubSubContainerTypography" >{t("websiteguide")}</Typography>
                         <Typography sx={{ color: "grey", fontSize: "0.8rem", mt: 0.5,"@media (max-width:900px)":{display:"none"} }}>{t("onerequestmultiplequotes")}</Typography>
                     </Box>
+                    </a>
                 </Box>
             </Box>
 
@@ -158,28 +167,33 @@ const Dashboard = ({ subTitle }) => {
                 <Typography sx={{ cursor: "pointer", width: "90%", margin: "0 auto", fontSize: "1.4rem","@media (max-width:900px)":{fontSize:"1.2rem"}, fontWeight: "600", mb: 1, direction: theme.palette.mode == "light" ? "rtl" : "ltr" }}>{t("newest")}</Typography>
             </Box>
             <Box sx={{ width: "90%", m: "0 auto", borderRadius: "10px", boxSizing: "border-box" }}>
-                <Slider {...settingsCard} rows={2} centerMode={true} style={{ paddingTop: "2%" }} >
-                    <Card1 id={11} />
-                    <Card1 id={12} />
-                    <Card1 id={13} />
-                    <Card1 id={11} />
-                    <Card1 id={12} />
-                    <Card1 id={13} />
-                    <Card1 id={11} />
-                    <Card1 id={12} />
-                    <Card1 id={13} />
-                    <Card1 id={11} />
-                    <Card1 id={12} />
-                    <Card1 id={13} />
+                <Slider {...settingsCard} autoplaySpeed={5000} rows={1} centerMode={true} style={{ paddingTop: "2%" }} >
+                    <Card3 id={11} img1="/images/srcImgs/Card3Imgs/download1.png" />
+                    <Card3 id={12} img1="/images/srcImgs/Card3Imgs/download2.png" />
+                    <Card3 id={13} img1="/images/srcImgs/Card3Imgs/download3.png" />
+                    <Card3 id={11} img1="/images/srcImgs/Card3Imgs/download4.png" />
+                    <Card3 id={12} img1="/images/srcImgs/Card3Imgs/download5.png" />
+                    <Card3 id={11} img1="/images/srcImgs/Card3Imgs/download1.png" />
+                    <Card3 id={12} img1="/images/srcImgs/Card3Imgs/download2.png" />
+                    <Card3 id={13} img1="/images/srcImgs/Card3Imgs/download3.png" />
+                    <Card3 id={11} img1="/images/srcImgs/Card3Imgs/download4.png" />
+                    <Card3 id={12} img1="/images/srcImgs/Card3Imgs/download5.png" />
+                    <Card3 id={11} img1="/images/srcImgs/Card3Imgs/download1.png" />
+                    <Card3 id={12} img1="/images/srcImgs/Card3Imgs/download2.png" />
+                    <Card3 id={13} img1="/images/srcImgs/Card3Imgs/download3.png" />
+                    <Card3 id={11} img1="/images/srcImgs/Card3Imgs/download4.png" />
+                    <Card3 id={12} img1="/images/srcImgs/Card3Imgs/download5.png" />
                 </Slider>
             </Box>
             <Box>
                 <Typography sx={{ cursor: "pointer", width: "90%", margin: "0 auto", fontSize: "1.4rem","@media (max-width:900px)":{fontSize:"1.2rem"}, fontWeight: "600", mb: 2, direction: theme.palette.mode == "light" ? "rtl" : "ltr" }}>{t("popular")}</Typography>
             </Box>
-            <Box sx={{ width: "90%", margin: "0 auto", borderRadius: "10px", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 2 }}>
-                <Card2 id={11} />
-                <Card2 id={12} />
-                <Card2 id={13} />
+            <Box sx={{ width: "90%", margin: "0 auto", borderRadius: "10px", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 2,"@media(max-width:900px)":{gap:1} }}>
+                <Card3 id={11} img1="/images/srcImgs/Card3Imgs/download1.png" />
+                <Card3 id={12} img1="/images/srcImgs/Card3Imgs/download2.png" />
+                <Card3 id={13} img1="/images/srcImgs/Card3Imgs/download3.png" />
+                <Card3 id={11} img1="/images/srcImgs/Card3Imgs/download4.png" />
+                <Card3 id={12} img1="/images/srcImgs/Card3Imgs/download5.png" />
             </Box>
             {/* <Box>
                 <Typography sx={{ cursor: "pointer", width: "90%", margin: "0 auto", fontSize: "1.4rem", fontWeight: "600", mb: 2, display: "flex" }}>{t("tradeservices")}<Typography sx={{ fontSize: "1.2rem", ml: 2, mt: "auto", mb: "auto", color: "grey" }}>Microsis.com's trade services help ensure that your purchases are protected.</Typography></Typography>

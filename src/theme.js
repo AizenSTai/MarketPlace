@@ -74,6 +74,22 @@ const createColor = (mainColor) => augmentColor({ color: { main: mainColor } });
 export const themeSettings = (mode)=>{
     const colors = tokens(mode)
     return{
+        dropdown: {
+            
+            "&.MuiAutocomplete-hasPopupIcon .MuiAutocomplete-inputRoot":
+              {
+                padding: "0px !important",
+                fontSize: "14px",
+                color: "#1E5EF3",
+                fontWeight: 500,
+              },
+            "& .MuiAutocomplete-endAdornment": {
+              right: "0px !important",
+            },
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#1E5EF3",
+            },
+          },
         palette:{
             anger:createColor("#f40b27"),
             // apple:createColor("#5dba40"),

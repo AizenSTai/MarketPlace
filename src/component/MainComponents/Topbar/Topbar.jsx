@@ -55,7 +55,7 @@ const Topbar = (props) => {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        height: `240px`,
+        height: `260px`,
         // backgroundColor: "black",
         backgroundImage: "url(/images/logos/TopLogo.jpg)",
         backgroundRepeat: "no-repeat",
@@ -222,16 +222,18 @@ const Topbar = (props) => {
           id="searchBoxContainer"
           sx={{overflow :"hidden"}}
         >
-          <Catdropdown/>
-          {/* <InputBase
-            id="inputBase"
-            onChange={SearchbarHandler}
-            sx={{width:"100%"}}
-            // value = {}
-            placeholder={t("whatareyoulookingfor")}
-          /> */}
-          <ChipSearchBar/>
-          <Box sx={{ display: "flex" }}>
+          <Box sx={{display:"flex",width:"90%",boxSizing:"border-box"}}>
+            {/* <InputBase
+              id="inputBase"
+              onChange={SearchbarHandler}
+              sx={{width:"100%"}}
+              // value = {}
+              placeholder={t("whatareyoulookingfor")}
+            /> */}
+            <Catdropdown/>
+            <ChipSearchBar/>
+          </Box>
+          <Box sx={{ display:"flex"}}>
             {/* <IconButton type="button" sx={{}}>
               <PhotoCameraOutlinedIcon                
                 sx={{ mt: "auto", mb: "auto",fontSize:"2rem" }}

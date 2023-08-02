@@ -30,7 +30,7 @@ const inputImageHandler = () => {
   const image = document.getElementById('blah')
   // console.log(input)
   // console.log(image)
-  console.log(input.files)
+  // console.log(input.files)
   const [file] = input.files
   if (file) {
     image.src = URL.createObjectURL(file)
@@ -45,9 +45,11 @@ export default function AddProducts(props) {
   const [id, setId] = useState(null)
   const [product, setproduct] = useState(null)
   const [info, setInfo] = useState(null)
+  const [available, setAvailable] = useState(null)
   const [made, setMade] = useState(null)
   const [cost, setCost] = useState(null)
   const [selectItem, setSelectItem] = useState("")
+  const [selectAvailableItem, setSelectAvailableItem] = useState("")
   const [imageFile, setImageFile] = useState(null)
   const [imgOpen, setImgOpen] = useState(false)
   const TrophyImg = styled('img')({
@@ -99,6 +101,17 @@ export default function AddProducts(props) {
       headerAlign: 'center'
     },
     {
+      field: 'available',
+      headerName: 'موجودی',
+      headerClassName: 'super-app-theme--header',
+      flex: 5,
+      headerAlign: 'center',
+      renderCell :params =>{
+        // console.log(params)
+        return (<Typography sx={{width:"100%",textAlign:"center"}}>{params.formattedValue}</Typography>)
+      }
+    },
+    {
       field: 'cost',
       headerName: 'قیمت',
       headerClassName: 'super-app-theme--header',
@@ -108,10 +121,10 @@ export default function AddProducts(props) {
   ]
 
   const [rows, setRows] = useState([
-    { userId: "1", made: 'ایران', image: '/images/misc/trophy.png', product: "رنگ", info: "خاکستری", cost: "60,000,000 تومان" },
-    { userId: "2", made: 'ایتالیا', image: '/images/misc/paypal.png', product: "رنگ", info: "سفید", cost: "40,000,000 تومان" },
-    { userId: "3", made: 'ترک', image: '/images/misc/chart.png', product: "رنگ", info: "قهوه ای", cost: "30,000,000 تومان" },
-    { userId: "4", made: 'چین', image: '/images/misc/favicon.jpg', product: "سیمان", info: "سفید 15 کیلویی", cost: "100,000,000 تومان" },
+    { userId: "1", made: 'ایران', image: '/images/misc/trophy.png',available:"نا موجود", product: "رنگ", info: "خاکستری", cost: "60,000,000 تومان" },
+    { userId: "2", made: 'ایتالیا', image: '/images/misc/paypal.png',available:"موجود", product: "رنگ", info: "سفید", cost: "40,000,000 تومان" },
+    { userId: "3", made: 'ترک', image: '/images/misc/chart.png',available:"نا موجود", product: "رنگ", info: "قهوه ای", cost: "30,000,000 تومان" },
+    { userId: "4", made: 'چین', image: '/images/misc/favicon.jpg',available:"موجود", product: "سیمان", info: "سفید 15 کیلویی", cost: "100,000,000 تومان" },
   ])
 
   const snackHandleClick = () => {
@@ -134,6 +147,7 @@ export default function AddProducts(props) {
     setId(prop.row.userId)
     setCost(prop.row.cost)
     setInfo(prop.row.info)
+    setAvailable(prop.row.available)
     setproduct(prop.row.product)
     setMade(prop.row.made)
     setImageFile(prop.row.image)
@@ -156,11 +170,13 @@ export default function AddProducts(props) {
     // console.log([leftRows])
     setRows(leftRows)
     setproduct("")
+    setAvailable("")
     setCost("")
     setId("")
     setInfo("")
     setMade("")
     setSelectItem("")
+    setSelectAvailableItem("")
     setImageFile("")
     const pic = document.getElementById('blah')
     pic.src = "#"
@@ -182,11 +198,13 @@ export default function AddProducts(props) {
       setRows([...rows, { userId: (rows.length + 1), image: imageFile, product: product, made: made, info: info, cost: cost }])
     }
     setproduct("")
+    setAvailable("")
     setCost("")
     setId("")
     setInfo("")
     setMade("")
     setSelectItem("")
+    setSelectAvailableItem("")
     setImageFile("")
     const pic = document.getElementById('blah')
     pic.src = "#"
@@ -228,21 +246,23 @@ export default function AddProducts(props) {
       if (element.userId != id) {
         leftRows.push(element)
       } else if (element.userId == id) {
-        leftRows.push({ userId: element.userId, product: product, image: imageFile, made: made, info: info, cost: cost })
+        leftRows.push({ userId: element.userId, product: product, image: imageFile, made: made, info: info, cost: cost,available: available})
       }
     })
     setRows(leftRows)
     setproduct("")
+    setAvailable("")
     setCost("")
     setId("")
     setInfo("")
     setMade("")
     setSelectItem("")
+    setSelectAvailableItem("")
     const pic = document.getElementById('blah')
     pic.src = "#"
     setImgOpen(false)
   }
-  const handleSelectChange = (event) => {
+  const handleProductSelectChange = (event) => {
     // console.log(event.target)
     if (event.target.value == 'color') {
       setproduct('رنگ')
@@ -253,6 +273,19 @@ export default function AddProducts(props) {
     } else {
       setproduct("")
       setSelectItem('')
+    }
+  }
+  const handleAvailableSelectChange = (event) => {
+    // console.log(event.target)
+    if (event.target.value == 'available') {
+      setAvailable('موجود')
+      setSelectAvailableItem('available')
+    } else if (event.target.value == 'unavailable') {
+      setAvailable('ناموجود')
+      setSelectAvailableItem('unavailable')
+    } else {
+      setAvailable("")
+      setSelectAvailableItem('')
     }
   }
   const {
@@ -317,7 +350,7 @@ export default function AddProducts(props) {
             <Typography sx={{ width: "50%", color: "black", fontSize: "1rem", alignSelf: "center", textAlign: "center" }}> انتخاب کالا :</Typography>
             <FormControl sx={{ alignSelf: "center", width: "10%" }}>
               <InputLabel></InputLabel>
-              <Select sx={{ color: "white" }} onChange={handleSelectChange} value={selectItem} variant='filled' >
+              <Select sx={{ color: "white" }} onChange={handleProductSelectChange} value={selectItem} variant='filled' >
                 <MenuItem sx={{ direction: "rtl" }} value="">هیچکدام</MenuItem>
                 <MenuItem sx={{ direction: "rtl" }} value="color">رنگ</MenuItem>
                 <MenuItem sx={{ direction: "rtl" }} value="cement">سیمان</MenuItem>
@@ -365,6 +398,28 @@ export default function AddProducts(props) {
               sx={{ width: "70%", alignSelf: "center" }}
             />
           </Box>
+          <Box sx={{ display: "flex", width: "20%", alignSelf: "flex-start", mt: 4, position: "relative", minWidth: "200px" }}>
+            <Typography sx={{ width: "50%", color: "black", fontSize: "1rem", alignSelf: "center", textAlign: "center" }}>موجودی</Typography>
+            <FormControl sx={{ alignSelf: "center", width: "10%" }}>
+              <InputLabel></InputLabel>
+              <Select sx={{ color: "white" }} onChange={handleAvailableSelectChange} value={selectAvailableItem} variant='filled' >
+                <MenuItem sx={{ direction: "rtl" }} value="">هیچکدام</MenuItem>
+                <MenuItem sx={{ direction: "rtl" }} value="available">موجود</MenuItem>
+                <MenuItem sx={{ direction: "rtl" }} value="unavailable">نا موجود</MenuItem>
+              </Select>
+            </FormControl>
+            <TextField
+              fullWidth
+              value={available}
+              id='product'
+              variant='filled'
+              defaultValue=' '
+              InputProps={{
+                readOnly: true
+              }}
+              sx={{ width: "50%", alignSelf: "center" }}
+            />
+          </Box >
           <Box sx={{ display: "flex", width: "30%", alignSelf: "flex-start", mt: 4, minWidth: "300px" }}>
             <Typography sx={{ color: "black", fontSize: "1rem", alignSelf: "center", textAlign: "center", width: "40%" }}> قیمت کالا :</Typography>
             <NumericFormat

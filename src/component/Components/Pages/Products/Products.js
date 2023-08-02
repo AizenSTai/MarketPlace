@@ -32,7 +32,7 @@ const Products = (props) => {
                     name: "pillow", description: "کمربند دور کمری مدل mx-190", cost: "3000000", colors: ["black", "brown", "white", "lavender"]
                     , manufacturer: "بالشت سازی اصفهان", id: params.id, images: ["images/srcImgs/Card1Imgs/download1.png", "img2", "img3", "img4", "img5"], seller: "ali", sellerId: "112281", rate: "عالی"
                 }])
-                console.log("true")
+                // console.log("true")
                 break;
             case "12":
                 setInfos([{

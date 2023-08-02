@@ -4,7 +4,7 @@
     width: 19%;
     max-width: 275px;
     min-width: 225px;
-    height: 375px;
+    height: 420px;
     overflow: hidden;
     border-radius: 10px;
     margin-bottom: 32px;
@@ -16,28 +16,35 @@
 #card-three-image-container {
     cursor: pointer;
     border-radius: 10px;
-    height: 200px;
-    margin-bottom: 8px
+    height: 220px;
+    /* margin-bottom: 8px */
 }
 
 #card-three-big-text {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 800
 }
 
 #card-three-small-text {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: grey
 }
 
 #card-three-text-container {
     padding: 16px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
     justify-content: center
 }
-
+#card-three-slider {
+    height: 220px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 @media screen and (max-width:900px) {
     #card-three-container {
         min-width: 150px;

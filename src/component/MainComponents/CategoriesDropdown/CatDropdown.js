@@ -16,7 +16,7 @@ export default function CatDropdown() {
     <Box>
       <FormControl sx={{ml:2, width: "130px" }}>
         <Select
-          sx={{ height: "40px",bgcolor:"orange",borderRadius:"25px",fontSize:"0.9rem" }}
+          sx={{ height: "60px",bgcolor:"orange",borderRadius:"25px",fontSize:"0.9rem" }}
           value={age}
           onChange={handleChange}
           displayEmpty
